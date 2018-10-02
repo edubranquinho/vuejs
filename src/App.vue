@@ -1,7 +1,11 @@
 <template>
     <div>
-      <h1 v-text="titulo"></h1>
-      <img :src="foto.url" :alt="foto.alt"/>
+      <h1>{{titulo}}</h1>
+        <ul>
+          <li v-for="foto of fotos" :key="foto.titulo">
+            <img :src="foto.url" :alt="foto.titulo"/>
+          </li>
+        </ul>
     </div>
 </template>
 
@@ -10,11 +14,14 @@ export default {
   data(){
     return {
       titulo: 'AluraPic',
-      foto: {
-        url: 'http://tudosobrecachorros.com.br/wp-content/uploads/cachorro-independente.jpg',
-        alt: 'Cachorro'
-      }
+      fotos: []
     }
+  },
+
+  created() {
+    this.$http.get('http://localhost:3000/v1/fotos')
+    .then(res => res.json())
+    .then(fotos => this.fotos = fotos, err => console.log(err));
   }
 }
 </script>
