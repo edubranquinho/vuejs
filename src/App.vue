@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
     <div class="corpo">
       <h1 class="centralizado">{{titulo}}</h1>
         <ul class="lista-fotos">
@@ -6,6 +7,13 @@
               <meu-painel :titulo="foto.titulo">
                   <img  class="imagem-responsiva" :src="foto.url" :alt="foto.titulo"/>
               </meu-painel>
+=======
+    <div>
+      <h1>{{titulo}}</h1>
+        <ul>
+          <li v-for="foto of fotos" :key="foto.titulo">
+            <img :src="foto.url" :alt="foto.titulo"/>
+>>>>>>> e6a3beaf4d6c5c08e338051d11cc449fc782dc24
           </li>
         </ul>
     </div>
